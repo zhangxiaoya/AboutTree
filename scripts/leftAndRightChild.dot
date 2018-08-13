@@ -1,0 +1,6 @@
+
+graph G{
+    graph[ordering="out"];
+    A -- B;
+    A -- C;
+}
