@@ -1,0 +1,15 @@
+
+graph G{
+    graph[ordering="out"];
+    A -- B;
+    A -- C;
+    B -- D;
+    B -- E;
+    E -- F[style=bold, color=red];
+    E -- NULL[style="invis"];
+    C -- H[style=bold, color=red];
+    C -- NULL[style="invis"];
+    H -- G[style=bold, color=red];
+    H -- NULL[style="invis"];
+    NULL[style="invis"];
+}

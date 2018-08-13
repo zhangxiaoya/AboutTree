@@ -1,0 +1,5 @@
+graph g{
+    A -- B;
+    A -- NULL[style="invis"]
+    NULL[style="invis"]
+}
