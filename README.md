@@ -11,11 +11,19 @@ How to recover Binary tree use only pre-order visit list and post-order visit li
 
 比如下图这个只有左子树,先序遍历和后序遍历分别是AB和BA,但是如果把它换成只有右子树,先序遍历和后序遍历的顺序还是AB和BA.
 
-![]()
+1. 只有左子树
+
+![](https://github.com/zhangxiaoya/AboutTree/blob/master/scripts/leftChildOnly.png)
+
+2. 只有右子树
+
+![](https://github.com/zhangxiaoya/AboutTree/blob/master/scripts/rightChildOnly.png)
 
 但是如果是左右子树都有的话,比如下面的这个二叉树,先序遍历序列是ABC,后序遍历序列是BCA,可以直接确定A是根节点,先序序列肯定是先根,再左,后右;而后序的顺序是先左,再右,后根.可以看出,先序中的根节点右侧的节点可能是左子树的根节点(左右子树都存在的情况);在后序序列中,根节点的右侧第一个节点可能是右子树的根节点(左右子树都存在的情况).在先序序列中,左子树根节点的位置在右子树根节点位置的左侧,在后序序列中,右子树根节点的位置,在左子树根节点位置的右侧(不一定挨着).这样的先后顺序是唯一确定的,然后迭代到叶子节点,能确认唯一的二叉树.
 
-![]()
+3. 左右子树都有
+
+![](https://github.com/zhangxiaoya/AboutTree/blob/master/scripts/leftAndRightChild.png)
 
 知道了这个规律,其实也就容易知道多少中可能的二叉树了,每一个出度为1的节点,都会有两种可能,要么是左子树,要么是右子树.假设有n个节点,其中m个节点出度为1的节点,那么就有2的m次方种可能二叉树.
 
@@ -24,6 +32,12 @@ How to recover Binary tree use only pre-order visit list and post-order visit li
 另外,除了根节点,每一个节点都有一个边连到入度,因此, N = n1 + n2 + n0  - 1.那么根绝这个公式可以得到,n2=n0 - 1.如果能求出叶子节点个数,其他节点个数也就能求出来了,二叉树种类也就知道了.但是似乎不是很容易,下面我用直接递归的方式,计算度为1的个数,并顺便计算出所有的可能.
 
 先序序列中根节点右侧的节点,如果与后序序列中根节点左侧的节点相同,那么说明这个根节点只有一个子树,其出度为1.
+
+如图,表示下面的一种可能的二叉树
+
+![](https://github.com/zhangxiaoya/AboutTree/blob/master/scripts/sample.png)
+
+> 图是用的Graphvis画的,然后参考了下面的文章,使用了binarytree,让图变得更好看一些.在scripts文件家中,有dot脚本.使用命令 `dot sample.dot| gvpr -c -f binarytree.gvpr| neato -n -Tpng -o sample.png`来生成图片.
 
 ```
 #include <iostream>
@@ -86,7 +100,7 @@ int main()
 }
 ```
 
-> 图是用的Graphvis画的,然后参考了下面的文章,使用了binarytree,让图变得更好看一些.在scripts文件家中,有dot脚本.使用命令 `dot sample.dot| gvpr -c -f binarytree.gvpr| neato -n -Tpng -o sample.png`来生成图片.
+答案是8
 
 ## 参考
 1. [如何用graphvis画二叉树](https://blog.csdn.net/theonegis/article/details/71772334)
