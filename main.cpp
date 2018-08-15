@@ -1,16 +1,9 @@
 #include <iostream>
 #include <string>
+#include "TreeNode.h"
+#include "BST.h"
 
 using namespace std;
-
-struct TreeNode
-{
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
 
 void howManyBinaryTree(const string& preOrder, const string& postOrder, int& count)
 {
@@ -53,6 +46,16 @@ int main()
     int count = 1;
     howManyBinaryTree(preOrder, postOrder, count);
     cout << count << endl;
+
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root -> left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+
+    BST bst(root);
+    bst.dumpDot("test.dot");
 
     return 0;
 }

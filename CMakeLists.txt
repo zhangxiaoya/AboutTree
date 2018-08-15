@@ -3,4 +3,4 @@ project(RecoverTree)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(RecoverTree main.cpp)
+add_executable(RecoverTree main.cpp BST.cpp BST.h TreeNode.h)
